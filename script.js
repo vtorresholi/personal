@@ -1,4 +1,4 @@
-const SECRET_CODE = '1999'; // <-- CAMBIA AQUÍ TU CÓDIGO
+const SECRET_CODE = '2802'; // <-- CAMBIA AQUÍ TU CÓDIGO
 
 const lockScreen = document.getElementById('screen-lock');
 const letterScreen = document.getElementById('screen-letter');
