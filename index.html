@@ -15,11 +15,9 @@
   <main class="app-shell">
     <section id="screen-lock" class="screen active card">
       <p class="eyebrow">Feliz mesiversario 💌</p>
-
       <div class="lock-wrap">
         <div class="heart-lock">💗</div>
       </div>
-
       <h1>Ingresa nuestro código secreto</h1>
 
       <div class="pin-inputs" aria-label="Código secreto de 4 dígitos">
@@ -29,15 +27,7 @@
         <input class="pin-box" type="password" inputmode="numeric" maxlength="1" />
       </div>
 
-      <button id="unlockBtn" class="btn" type="button">Abrir sorpresa</button>
-
-      <audio id="bgMusic" loop>
-        <source src="cancion.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio.
-      </audio>
-
-      <button id="musicToggle" class="btn" type="button">🎵 Reproducir música</button>
-
+      <button id="unlockBtn" class="btn">Abrir sorpresa</button>
       <p id="errorMsg" class="error hidden">Ese código no es. Prueba otra vez, amorcito 💘</p>
     </section>
 
@@ -45,22 +35,17 @@
       <div class="letter-panel">
         <p class="eyebrow">Para mi persona favorita</p>
         <h2>Holi,</h2>
-
         <div class="letter-text">
-          <p>
-            Sé que normalmente no se celebra el salir con alguien o así, pero ya llevamos 1 mes juntitos y tenerte en mi vida me parece algo de celebrar siempre, creo que en este mes hemos logrado conocer más del otro, lo que queremos y lo que no. Sigue sorprendiéndome lo mucho que logramos entendernos a pesar de los problemas, y aunque a veces haya dificultades o obstáculos, siempre ponemos el cariño que nos tenemos por delante de todo. Estoy más que agradecida de tenerte en mi vida, de permitirme sentir algo tan bonito después de mucho.
+          <p>Sé que normalmente no se celebra el salir con alguien o así, pero ya llevamos 1 mes juntitos y tenerte en mi vida me parece algo de celebrar siempre, creo que en este mes hemos logrado conocer más del otro, lo que queremos y lo que no.  Sigue sorprendiéndome lo mucho que logramos entendernos a pesar de los problemas, y aunque a veces haya dificultades o obstáculos , siempre ponemos el cariño que nos tenemos por delante de todo. Estoy más que agradecida de tenerte en mi vida, de permitirme sentir algo tan bonito después de mucho. 
           </p>
-
           <p>
-            Me haces muy feliz siempre, sabes como sacarme una sonrisa y estar para mí siempre. Como te dije, quiero ser lo mismo y más para ti, quiero hacerte sentir seguro, querido y cuidado siempre. Estoy dispuesta a escucharte, a apoyarte en todo, quiero ser tu soporte para todo mi amor. Sé que puedo ser difícil a veces, pero todos los días me prometo a mí misma mejorar por nosotros, por mí y por ti, porque quiero que lleguemos lejos juntos. No importa lo difícil que se ponga todo, siempre estaré contigo y para ti. Quiero que te veas como yo te veo, estoy muy orgullosa de poder llamarte mío.
+            Me haces muy feliz siempre, sabes como sacarme una sonrisa y estar para mi siempre. Como te dije, quiero ser lo mismo y más para ti, quiero hacerte sentir, seguro, querido y cuidado siempre. Estoy dispuesta a escucharte, a apoyarte en todo , quiero ser tu soporte para todo mi amor.  Sé que puedo ser difícil a veces, pero todos los días me prometo a mi misma mejorar por nosotros, por mi y por ti, porque quiero que lleguemos lejos juntos. No importa lo difícil que se ponga todo, siempre estaré contigo y para ti. Quiero que te veas como yo te veo , estoy muy orgullosa de poder llamarte mío. 
           </p>
-
           <p>
             Te quiero muchísimo Gio.
           </p>
-
           <p class="signature">
-            Ah y perdón por adelantado por todas las veces que te seguiré haciendo renegar jajaj ahora sí bye, besitos tqm,<br />
+            Ah y perdón por adelantado por todas las veces que te seguiré haciendo renegar jajaj ahora si bye, besitos tqm,<br />
             <strong>Valen 💕</strong>
           </p>
         </div>
@@ -68,20 +53,17 @@
 
       <div class="scratch-panel">
         <p class="scratch-title">Rasca para descubrir tu sorpresa ✨</p>
-
         <div class="scratch-card">
-          <div id="revealContent" class="reveal-content">
-            <div class="reveal-inner">
-              <img src="nosotros.jpg" alt="Nosotros" class="surprise-photo">
-            </div>
-          </div>
-
+         <div id="revealContent" class="reveal-content">
+  <div class="reveal-inner">
+    <img src="nosotros.jpg" alt="Nosotros" class="surprise-photo">
+  </div>
+</div>
           <canvas id="scratchCanvas" width="420" height="420" aria-label="Tarjeta para raspar"></canvas>
         </div>
       </div>
     </section>
-  </main>
+    </main>
 
-  <script src="script.js"></script>
 </body>
 </html>
