@@ -1,11 +1,11 @@
 :root {
-  --bg: #fff8fb;
-  --card: rgba(255,255,255,0.82);
-  --line: #f4bfd0;
-  --text: #6e4356;
-  --title: #d14f79;
-  --accent: #f48fb1;
-  --accent-2: #ffd5e3;
+  --bg: #1f1b1d;
+  --card: rgba(42, 36, 39, 0.88);
+  --line: #f0b8c8;
+  --text: #f6dfe7;
+  --title: #f7b2c9;
+  --accent: #e8a0b8;
+  --accent-2: #2c2528;
   --shadow: 0 20px 50px rgba(209, 79, 121, 0.12);
 }
 
