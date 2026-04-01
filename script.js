@@ -146,4 +146,24 @@ function initScratchCard() {
 
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
+    }
+  }
+
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+
+if (musicToggle && bgMusic) {
+  musicToggle.addEventListener('click', async () => {
+    try {
+      if (bgMusic.paused) {
+        await bgMusic.play();
+        musicToggle.textContent = '⏸️ Pausar música';
+      } else {
+        bgMusic.pause();
+        musicToggle.textContent = '🎵 Reproducir música';
+      }
+    } catch (error) {
+      console.error('No se pudo reproducir la música:', error);
+    }
+  });
 }
