@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestra Sorpresa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="floating-hearts"></div>
+
+  <main class="app-shell">
+    <section id="screen-lock" class="screen active card">
+      <p class="eyebrow">Una sorpresa para ti 💌</p>
+      <div class="lock-wrap">
+        <div class="heart-lock">💗</div>
+      </div>
+      <h1>Ingresa nuestro código secreto</h1>
+      <p class="subtext">Pista: usa una fecha o número especial para ustedes.</p>
+
+      <div class="pin-inputs" aria-label="Código secreto de 4 dígitos">
+        <input class="pin-box" type="password" inputmode="numeric" maxlength="1" />
+        <input class="pin-box" type="password" inputmode="numeric" maxlength="1" />
+        <input class="pin-box" type="password" inputmode="numeric" maxlength="1" />
+        <input class="pin-box" type="password" inputmode="numeric" maxlength="1" />
+      </div>
+
+      <button id="unlockBtn" class="btn">Abrir sorpresa</button>
+      <p id="errorMsg" class="error hidden">Ese código no es. Prueba otra vez, amorcito 💘</p>
+      <p class="hint">Código actual en el archivo JS: <strong>1999</strong> (cámbialo por el tuyo).</p>
+    </section>
+
+    <section id="screen-letter" class="screen card letter-layout">
+      <div class="letter-panel">
+        <p class="eyebrow">Para mi persona favorita</p>
+        <h2>Mi amor,</h2>
+        <div class="letter-text">
+          <p>
+            Gracias por llegar a mi vida y por hacerla más bonita con tu forma de quererme,
+            cuidarme y acompañarme. Cada momento contigo se siente especial, incluso los más simples.
+          </p>
+          <p>
+            Me encanta construir recuerdos contigo, reírme contigo y seguir descubriendo todo lo lindo
+            que somos juntos. Eres una parte muy importante de mi vida, y quiero que nunca olvides
+            cuánto te amo y lo feliz que me haces.
+          </p>
+          <p>
+            Esta sorpresa es solo una forma chiquita de recordarte que eres muy especial para mí.
+          </p>
+          <p class="signature">
+            Con muchísimo amor,<br />
+            <strong>Valen 💕</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="scratch-panel">
+        <p class="scratch-title">Rasca para descubrir tu sorpresa ✨</p>
+        <div class="scratch-card">
+          <div id="revealContent" class="reveal-content">
+            <div class="reveal-inner">
+              <div class="reveal-badge">🎁</div>
+              <h3>Te amo muchísimo</h3>
+              <p>Aquí puedes poner una foto de ustedes, una invitación o un mensajito final.</p>
+            </div>
+          </div>
+          <canvas id="scratchCanvas" width="420" height="420" aria-label="Tarjeta para raspar"></canvas>
+        </div>
+        <p class="scratch-note">Tip: si quieres revelar una foto, reemplaza el contenido de la tarjeta por una imagen.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
