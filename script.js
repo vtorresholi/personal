@@ -1,4 +1,4 @@
-const SECRET_CODE = '2802'; // <-- CAMBIA AQUÍ TU CÓDIGO
+const SECRET_CODE = '2802'; // cambia aquí tu código
 
 const lockScreen = document.getElementById('screen-lock');
 const letterScreen = document.getElementById('screen-letter');
@@ -6,10 +6,15 @@ const unlockBtn = document.getElementById('unlockBtn');
 const errorMsg = document.getElementById('errorMsg');
 const pinInputs = Array.from(document.querySelectorAll('.pin-box'));
 
-pinInputs[0].focus();
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+
+if (pinInputs.length > 0) {
+  pinInputs[0].focus();
+}
 
 pinInputs.forEach((input, index) => {
-  input.addEventListener('input', (e) => {
+  input.addEventListener('input', () => {
     input.value = input.value.replace(/\D/g, '');
     if (input.value && index < pinInputs.length - 1) {
       pinInputs[index + 1].focus();
@@ -20,50 +25,82 @@ pinInputs.forEach((input, index) => {
     if (e.key === 'Backspace' && !input.value && index > 0) {
       pinInputs[index - 1].focus();
     }
-    if (e.key === 'Enter') validateCode();
+
+    if (e.key === 'Enter') {
+      validateCode();
+    }
   });
 });
 
-unlockBtn.addEventListener('click', validateCode);
+if (unlockBtn) {
+  unlockBtn.addEventListener('click', validateCode);
+}
 
 function validateCode() {
   const entered = pinInputs.map(i => i.value).join('');
+
   if (entered === SECRET_CODE) {
     lockScreen.classList.remove('active');
     letterScreen.classList.add('active');
+    errorMsg.classList.add('hidden');
     initScratchCard();
   } else {
     errorMsg.classList.remove('hidden');
-    pinInputs.forEach(i => i.value = '');
-    pinInputs[0].focus();
+    pinInputs.forEach(i => (i.value = ''));
+    if (pinInputs.length > 0) {
+      pinInputs[0].focus();
+    }
   }
 }
 
+if (musicToggle && bgMusic) {
+  musicToggle.addEventListener('click', async () => {
+    try {
+      if (bgMusic.paused) {
+        await bgMusic.play();
+        musicToggle.textContent = '⏸️ Pausar música';
+      } else {
+        bgMusic.pause();
+        musicToggle.textContent = '🎵 Reproducir música';
+      }
+    } catch (error) {
+      console.error('No se pudo reproducir la música:', error);
+      alert('No se pudo reproducir la música. Revisa que el archivo se llame cancion.mp3 y esté en la misma carpeta.');
+    }
+  });
+}
+
 let scratchInitialized = false;
+
 function initScratchCard() {
   if (scratchInitialized) return;
   scratchInitialized = true;
 
   const canvas = document.getElementById('scratchCanvas');
+  if (!canvas) return;
+
   const card = canvas.parentElement;
   const ctx = canvas.getContext('2d');
 
   function resizeCanvas() {
     const rect = card.getBoundingClientRect();
     const ratio = window.devicePixelRatio || 1;
+
     canvas.width = rect.width * ratio;
     canvas.height = rect.height * ratio;
     canvas.style.width = rect.width + 'px';
     canvas.style.height = rect.height + 'px';
+
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     drawOverlay(rect.width, rect.height);
   }
 
   function drawOverlay(w, h) {
     ctx.globalCompositeOperation = 'source-over';
+
     const grad = ctx.createLinearGradient(0, 0, w, h);
-    grad.addColorStop(0, '#ffcadb');
-    grad.addColorStop(1, '#f08daf');
+    grad.addColorStop(0, '#ffc0e6');
+    grad.addColorStop(1, '#f695c5');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, w, h);
 
@@ -80,7 +117,7 @@ function initScratchCard() {
     ctx.fillStyle = 'rgba(255,255,255,0.95)';
     ctx.textAlign = 'center';
     ctx.font = '700 28px Playfair Display';
-    ctx.fillText('Scratch aquí ✨', w / 2, h / 2 - 8);
+    ctx.fillText('Rasca aquí ✨', w / 2, h / 2 - 8);
     ctx.font = '500 16px Inter';
     ctx.fillText('usa tu dedo o mouse', w / 2, h / 2 + 24);
   }
@@ -121,21 +158,15 @@ function initScratchCard() {
     isDrawing = false;
   }
 
-  canvas.addEventListener('mousedown', start);
-  canvas.addEventListener('mousemove', move);
-  window.addEventListener('mouseup', end);
-
-  canvas.addEventListener('touchstart', start, { passive: true });
-  canvas.addEventListener('touchmove', move, { passive: false });
-  window.addEventListener('touchend', end);
-
   function checkReveal() {
     const { width, height } = canvas;
     const imageData = ctx.getImageData(0, 0, width, height).data;
     let transparent = 0;
+
     for (let i = 3; i < imageData.length; i += 4) {
       if (imageData[i] === 0) transparent++;
     }
+
     const percent = transparent / (imageData.length / 4);
     if (percent > 0.55) {
       canvas.style.transition = 'opacity 400ms ease';
@@ -144,26 +175,14 @@ function initScratchCard() {
     }
   }
 
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+
+  canvas.addEventListener('touchstart', start, { passive: true });
+  canvas.addEventListener('touchmove', move, { passive: false });
+  window.addEventListener('touchend', end);
+
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
-    }
-  }
-
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
-
-if (musicToggle && bgMusic) {
-  musicToggle.addEventListener('click', async () => {
-    try {
-      if (bgMusic.paused) {
-        await bgMusic.play();
-        musicToggle.textContent = '⏸️ Pausar música';
-      } else {
-        bgMusic.pause();
-        musicToggle.textContent = '🎵 Reproducir música';
-      }
-    } catch (error) {
-      console.error('No se pudo reproducir la música:', error);
-    }
-  });
 }
