@@ -1,2 +1,0 @@
-Coloca aquí tu archivo MP3 y renómbralo exactamente como: mensaje.mp3
-La ruta debe quedar: audio/mensaje.mp3
