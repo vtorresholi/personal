@@ -1,0 +1,6 @@
+Abre index.html en Chrome. Contraseña: 2802.
+Para agregar tu video, coloca un archivo llamado video1.mp4 dentro de la carpeta videos.
+
+
+AUDIO:
+Para activar el reproductor bonito, entra a la carpeta audio y coloca tu archivo como mensaje.mp3.
